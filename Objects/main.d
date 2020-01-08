@@ -8,3 +8,4 @@
 .\objects\main.o: C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.3.0\Device\Include\system_MKL05Z4.h
 .\objects\main.o: leds.h
 .\objects\main.o: uart.h
+.\objects\main.o: buzzer.h

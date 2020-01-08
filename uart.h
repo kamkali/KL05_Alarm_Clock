@@ -1,9 +1,27 @@
-#ifndef __UART_H__
-#define __UART_H__
+/*
+ * File:		uart.h
+ * Purpose:     Provide common ColdFire uart routines for polled serial IO
+ *
+ * Notes:
+ */
 
-#include "MKL05Z4.h"                    // Device header
+#ifndef __uart_H__
+#define __uart_H__
 
-void UART_Init(void);
+#include "MKL05Z4.h"
 
 
-#endif /* __UART_H__ */
+/********************************************************************/
+
+
+
+//void uart0_init (int sysclk, int baud);
+// void UART_Init(void);
+void uartInitialize(void);
+uint8_t UART_getchar (void);
+void UART_putchar (uint8_t ch);
+int UART_getchar_present (void);
+
+/********************************************************************/
+
+#endif /* __uart_H__ */
