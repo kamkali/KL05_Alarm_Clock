@@ -29,6 +29,22 @@ void uart_init(){
     NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 
-void uart_send(uint8_t data){
+void uart_sendStr(uint8_t* str){
+	uint16_t i=0;
+	while(str[i] != 0){
+		while( !(UART0->S1&UART0_S1_TDRE_MASK)); 
+		UART0->D = str[i];
+		i++;
+	} 
+}
+
+void uart_sendCh(uint8_t data){
+	while(!(UART0->S1 & UART0_S1_TDRE_MASK));
 	UART0->D = data;
+}
+
+uint8_t uart_getchar(void){
+  while (!(UART0->S1 & UART0_S1_RDRF_MASK));
+    
+  return UART0->D;
 }

@@ -13,18 +13,12 @@
 
 /********************************************************************/
 
-
-
-//void uart0_init (int sysclk, int baud);
-// void UART_Init(void);
 void uartInitialize(void);
-// Piotr
 void uart_init(void);
-void uart_send(uint8_t data);
+void uart_sendCh(uint8_t data);
+void uart_sendStr(uint8_t* str);
 
-uint8_t UART_getchar (void);
-void UART_putchar (uint8_t ch);
-int UART_getchar_present (void);
+uint8_t uart_getchar (void);
 
 /********************************************************************/
 

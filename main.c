@@ -6,39 +6,25 @@
 #include "extra.h"
 #include "alarm.h"
 
-#define SYSCLK	8e3
-#define BAUD		9600
 
-#define PIT_CHANNEL_1	1
+uint8_t	msg;
+
 
 void UART0_IRQHandler(void){
-	static uint8_t	elo;
-	elo = UART0->D;
-	UART0->D = elo;
+	NVIC_ClearPendingIRQ(UART0_IRQn);
+	msg = uart_getchar();
+	uart_sendCh(msg);
 }
-
 
 int main(void){	
 	initLed();
-	//buzzerInit();
+	buzzerInit();
 	//pitInit();
 	uart_init();
-	
 	while(1){
-
-
-		/*
-		uint8_t set_pit_t = 1;
-		ledBlink(BLUE, 2);
-		if (set_pit_t){
-			setPit(PIT_CHANNEL_1, 99999999);
-			set_pit_t = 0;
-		}
-		*/
-		//buzzerTone(3, 200);
-		//ledBlink(GREEN, 4);
-		//ledBlink(BLUE, 4);
-
-
+		delay_mc(1000);
+		uart_sendStr("Welcome ");
+		uart_sendStr(msg);
+		uart_sendStr("\n\r");
 	}
 }
