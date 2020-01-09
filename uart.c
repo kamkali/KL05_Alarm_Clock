@@ -6,9 +6,9 @@
 void uart_init(){
     SIM->SCGC4 |= SIM_SCGC4_UART0_MASK;      //UART0 dolaczony do zegara
     SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;      //Port A dolaczony do zegara
-    SIM->SOPT2 |= SIM_SOPT2_UART0SRC(2); //Zegar OSCERCLK (8MHz)
-		PORTB->PCR[1] = PORT_PCR_MUX(2u);            //PTA1=RX_D
-    PORTB->PCR[2] = PORT_PCR_MUX(2u);            //PTA2=TX_D
+    SIM->SOPT2 |= SIM_SOPT2_UART0SRC(2); //Zegar OSCERCLK ~32kHz
+		PORTB->PCR[1] = PORT_PCR_ISF_MASK|PORT_PCR_MUX(0x2);            //PTB1=RX_D
+    PORTB->PCR[2] = PORT_PCR_ISF_MASK|PORT_PCR_MUX(0x2);            //PTB2=TX_D
 
     UART0->C2 &= ~(UART0_C2_TE_MASK | UART0_C2_RE_MASK );      //Blokada nadajnika i o dbiornika
 	
@@ -26,25 +26,28 @@ void uart_init(){
 		//UART0->C2 |= UART0_C2_TIE_MASK; //DODANE DODATKOWO
     UART0->C2 |= (UART0_C2_TE_MASK | UART0_C2_RE_MASK);        //Wlacz nadajnik i o dbiornik
     NVIC_EnableIRQ(UART0_IRQn);
+		NVIC_SetPriority(UART0_IRQn, 3);
     NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 
 void uart_sendStr(uint8_t* str){
 	uint16_t i=0;
 	while(str[i] != 0){
-		while( !(UART0->S1&UART0_S1_TDRE_MASK)); 
+		while( !(UART0->S1&UART0_S1_TDRE_MASK) && !(UART0->S1&UART0_S1_TC_MASK)); 
 		UART0->D = str[i];
 		i++;
 	} 
 }
 
 void uart_sendCh(uint8_t data){
-	while(!(UART0->S1 & UART0_S1_TDRE_MASK));
+	while(!(UART0->S1 & UART0_S1_TDRE_MASK) && !(UART0->S1&UART0_S1_TC_MASK));
 	UART0->D = data;
 }
 
+/*
 uint8_t uart_getchar(void){
   while (!(UART0->S1 & UART0_S1_RDRF_MASK));
     
   return UART0->D;
 }
+*/
