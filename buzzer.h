@@ -3,7 +3,7 @@
 
 #include "MKL05Z4.h"
 
-#define BUZZER_PIN 13
+#define BUZZER_PIN 13		//portB 13
 
 
 void buzzerInit(void);
