@@ -33,7 +33,7 @@ void uart_init(){
 void uart_sendStr(char* str){
 	uint16_t i=0;
 	while(str[i] != 0){
-		while( !(UART0->S1&UART0_S1_TDRE_MASK) && !(UART0->S1&UART0_S1_TC_MASK)); 
+		while( !(UART0->S1&UART0_S1_TDRE_MASK) && !(UART0->S1&UART0_S1_TC_MASK));
 		UART0->D = str[i];
 		i++;
 	} 
