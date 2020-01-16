@@ -30,6 +30,7 @@ void uart_init(){
     NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 
+
 void uart_sendStr(char* str){
 	uint16_t i=0;
 	while(str[i] != 0){

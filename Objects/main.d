@@ -9,8 +9,8 @@
 .\objects\main.o: leds.h
 .\objects\main.o: uart.h
 .\objects\main.o: buzzer.h
-.\objects\main.o: pit.h
 .\objects\main.o: extra.h
 .\objects\main.o: alarm.h
 .\objects\main.o: rtc.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\main.o: datetime.h

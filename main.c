@@ -2,57 +2,79 @@
 #include "leds.h"
 #include "uart.h"
 #include "buzzer.h"
-#include "pit.h"
 #include "extra.h"
 #include "alarm.h"
 #include "rtc.h"
+#include "datetime.h"
 
 
 char msg = ' ';
 char fullMsg[255];
+uint8_t full_msg_flag = 0;
 uint16_t i = 0;
 uint16_t j = 0;
 
 void UART0_IRQHandler(void){
+	full_msg_flag = 0;
 
 	NVIC_ClearPendingIRQ(UART0_IRQn);
 	msg = uart_getChar();
-	//uart_sendCh(msg);
 	fullMsg[i] = msg;
 	i++;
 	if (msg == '\r'){
+		full_msg_flag = 1;
 		j = i;
 		i = 0;
-	}
-	// msg = 2;
-	
-	//TODO: rest of logic
+	}	
+}
+
+void RTC_IRQHandler(void){
+	//ringTheAlarm();
 }
 
 
 
-int main(void){	
+int main(void){
+	date_time_t date;
+	uint32_t rtc_time = 0;
+	uint32_t epoch_time;
+	
 	initLed();
 	buzzerInit();
-	//pitInit();
 	uart_init();
 	rtc_init();
 	
-	uart_sendStr("Hello!");
- 	
-	rtc_write(4);
+	uart_sendStr("Hello!\r\n Please input current date and hour is given format: <day>/<month>/<year(last 2 dec)>:<hour>/<min>/<sec>\r\n");
+	while (msg == ' ');
+	while (!full_msg_flag);
 	
-	//uint32_t rtc_time = 0;
+	uart_sendStr(fullMsg);
+	
+	if ( parse_str_to_date(fullMsg, &date) == 0 )
+		uart_sendStr("Wrong format!!!\r\n");
+	
+	epoch_time = date_time_to_epoch(&date);
+
+    //epoch_to_date_time(&date, epoch_time);
+
+	
+	rtc_write(epoch_time);
+	
+	
 	while(1){
-		
-		delay_mc(1000);
-		//rtc_time = rtc_read();
-		//uart_sendCh((char)rtc_time);
-		
-		if (msg != ' '){
+
+		//delay_mc(1000);
+		rtc_time = rtc_read();
+		//uart_sendCh(rtc_time + 48);
+		if(fullMsg[0] == 'g'){
+			uart_sendCh(rtc_time);
+		} 
+		/*
+		else if (msg != ' '){
 			for (int k = 0; k < j; k++){
 				uart_sendCh(fullMsg[k]);
 			}
 		}
+		*/
 	}
 }

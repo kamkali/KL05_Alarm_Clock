@@ -457,6 +457,16 @@
               <FileType>5</FileType>
               <FilePath>.\rtc.h</FilePath>
             </File>
+            <File>
+              <FileName>datetime.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\datetime.c</FilePath>
+            </File>
+            <File>
+              <FileName>datetime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\datetime.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

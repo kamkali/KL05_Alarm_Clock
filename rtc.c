@@ -8,7 +8,7 @@ void rtc_init(void){
 	// select RTC clock source
 	SIM->SOPT1 &= ~SIM_SOPT1_OSC32KSEL_MASK;
 	//Zegar OSCERCLK ~32kHz
-	SIM->SOPT1 |= SIM_SOPT1_OSC32KSEL(2);
+	SIM->SOPT1 |= SIM_SOPT1_OSC32KSEL(0);
 	
 	// Configure the TSR. default value: 1
 	RTC->TSR = 1;
@@ -38,6 +38,17 @@ void rtc_init(void){
 
 	// enable counter
 	RTC->SR |= RTC_SR_TCE_MASK;
+	
+	RTC->IER = RTC_IER_TAIE_MASK;
+	
+	NVIC_ClearPendingIRQ(RTC_IRQn);
+	//NVIC_SetPriority(RTC_IRQn, 0);
+	NVIC_EnableIRQ(RTC_IRQn);
+}
+
+void rtc_set_alarm(uint32_t time){
+	NVIC_ClearPendingIRQ(RTC_IRQn);
+	RTC->TAR = time;
 }
 
 uint32_t rtc_read(void) {

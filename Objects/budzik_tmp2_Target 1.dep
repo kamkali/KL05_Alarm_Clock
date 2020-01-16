@@ -1,6 +1,6 @@
 Dependencies for Project 'budzik_tmp2', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\main.c)(0x5E1F2F68)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x5E20B432)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (MKL05Z4.h)(0x5E067953)
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D25F326)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)
@@ -11,11 +11,11 @@ I (C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device
 I (leds.h)(0x5E14F1CC)
 I (uart.h)(0x5E1DBE16)
 I (buzzer.h)(0x5E18B14E)
-I (pit.h)(0x5E15FD70)
 I (extra.h)(0x5E15DC0B)
 I (alarm.h)(0x5E15F1E8)
-I (rtc.h)(0x5E1DDEBB)
+I (rtc.h)(0x5E1F714F)
 I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9B3482)
+I (datetime.h)(0x5E207AD8)
 F (.\leds.c)(0x5E15DF14)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\leds.o --omf_browse .\objects\leds.crf --depend .\objects\leds.d)
 I (leds.h)(0x5E14F1CC)
 I (MKL05Z4.h)(0x5E067953)
@@ -27,7 +27,7 @@ I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\system_MKL05Z4.h)(0x55FBCAE8)
 I (extra.h)(0x5E15DC0B)
 F (.\leds.h)(0x5E14F1CC)()
-F (.\uart.c)(0x5E1DBE12)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+F (.\uart.c)(0x5E205D12)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
 I (MKL05Z4.h)(0x5E067953)
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D25F326)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)
@@ -84,8 +84,8 @@ I (C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device
 I (leds.h)(0x5E14F1CC)
 I (buzzer.h)(0x5E18B14E)
 F (.\alarm.h)(0x5E15F1E8)()
-F (.\rtc.c)(0x5E1DDEBA)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\rtc.o --omf_browse .\objects\rtc.crf --depend .\objects\rtc.d)
-I (rtc.h)(0x5E1DDEBB)
+F (.\rtc.c)(0x5E1F71F5)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\rtc.o --omf_browse .\objects\rtc.crf --depend .\objects\rtc.d)
+I (rtc.h)(0x5E1F714F)
 I (MKL05Z4.h)(0x5E067953)
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D25F326)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)
@@ -94,7 +94,17 @@ I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25F326)
 I (C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\system_MKL05Z4.h)(0x55FBCAE8)
 I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9B3482)
-F (.\rtc.h)(0x5E1DDEBB)()
+F (.\rtc.h)(0x5E1F714F)()
+F (.\datetime.c)(0x5E2083F0)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\datetime.o --omf_browse .\objects\datetime.crf --depend .\objects\datetime.d)
+I (datetime.h)(0x5E207AD8)
+I (MKL05Z4.h)(0x5E067953)
+I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D25F326)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)
+I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D25F326)
+I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D25F326)
+I (C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25F326)
+I (C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\system_MKL05Z4.h)(0x55FBCAE8)
+F (.\datetime.h)(0x5E207AD8)()
 F (RTE\Device\MKL05Z32xxx4\startup_MKL05Z4.s)(0x51C02128)(--cpu Cortex-M0+ --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include--pd "__UVISION_VERSION SETA 529" --pd "_RTE_ SETA 1" --pd "MKL05Z32xxx4 SETA 1"--list .\listings\startup_mkl05z4.lst --xref -o .\objects\startup_mkl05z4.o --depend .\objects\startup_mkl05z4.d)
 F (RTE\Device\MKL05Z32xxx4\system_MKL05Z4.c)(0x5E08DCB4)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL05Z32xxx4-o .\objects\system_mkl05z4.o --omf_browse .\objects\system_mkl05z4.crf --depend .\objects\system_mkl05z4.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)

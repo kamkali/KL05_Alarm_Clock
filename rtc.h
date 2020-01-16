@@ -10,4 +10,6 @@ void rtc_write(uint32_t t);
 
 uint32_t rtc_read(void);
 
+void rtc_set_alarm(uint32_t time);
+
 #endif /* __RTC_H__ */
