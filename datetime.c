@@ -1,4 +1,5 @@
 #include "datetime.h"
+#include "uart.h"
 
 unsigned int date_time_to_epoch(date_time_t* date_time)
 {
@@ -14,9 +15,12 @@ unsigned int date_time_to_epoch(date_time_t* date_time)
 
 void epoch_to_date_time(date_time_t* date_time, unsigned int epoch)
 {
-    date_time->second = epoch%60; epoch /= 60;
-    date_time->minute = epoch%60; epoch /= 60;
-    date_time->hour   = epoch%24; epoch /= 24;
+	date_time->second = epoch%60;
+	epoch /= 60;
+	date_time->minute = epoch%60;
+	epoch /= 60;
+	date_time->hour   = epoch%24;
+	epoch /= 24;
 
     unsigned int years = epoch/(365*4+1)*4; epoch %= 365*4+1;
 
@@ -39,7 +43,55 @@ void epoch_to_date_time(date_time_t* date_time, unsigned int epoch)
     date_time->day   = epoch-days[year][month]+1;
 }
 
-uint8_t find_number(uint8_t ch){
+static char* itoa(int value, char* result, int base) {
+    // check that the base if valid
+    if (base < 2 || base > 36) { *result = '\0'; return result; }
+
+    char* ptr = result, *ptr1 = result, tmp_char;
+    int tmp_value;
+
+    do {
+        tmp_value = value;
+        value /= base;
+        *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
+    } while ( value );
+
+    // Apply negative sign
+    if (tmp_value < 0) *ptr++ = '-';
+    *ptr-- = '\0';
+    while(ptr1 < ptr) {
+        tmp_char = *ptr;
+        *ptr--= *ptr1;
+        *ptr1++ = tmp_char;
+    }
+    return result;
+}
+
+void date_time_uart_send_str(date_time_t* date_time) {
+	char buffer[255];
+
+	uart_sendStr("Current date: ");
+	itoa(date_time->year, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh('/');
+	itoa(date_time->month, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh('/');
+	itoa(date_time->day, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh(' ');
+	itoa(date_time->hour, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh(':');
+	itoa(date_time->minute, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh(':');
+	itoa(date_time->second, buffer, 10);
+	uart_sendStr(buffer);
+	uart_sendCh('\r');
+}
+
+static uint8_t find_number(uint8_t ch){
     switch (ch)
     {
         case 48u:	return 0;

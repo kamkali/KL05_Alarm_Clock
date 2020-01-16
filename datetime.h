@@ -11,7 +11,7 @@ typedef struct
     uint16_t hour;   // 0-23
     uint16_t day;    // 1-31
     uint16_t month;  // 1-12
-    uint16_t year;   // 0-99 (representing 2000-2099)
+    uint16_t year;   // 0-99 (2000-2099)
 }date_time_t;
 
 static unsigned short days[4][12] =
@@ -28,6 +28,8 @@ unsigned int date_time_to_epoch(date_time_t* date_time);
 void epoch_to_date_time(date_time_t* date_time, unsigned int epoch);
 
 uint8_t parse_str_to_date(char *str, date_time_t *date_buf);
+				
+void date_time_uart_send_str(date_time_t* date_time);
 
 
 #endif /* __DATETIME_H__*/
