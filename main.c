@@ -23,6 +23,7 @@ void UART0_IRQHandler(void){
 
 	NVIC_ClearPendingIRQ(UART0_IRQn);
 	msg = uart_getChar();
+	uart_sendCh(msg);
 	fullMsg[i] = msg;
 	i++;
 	if (msg == '\r'){
@@ -31,6 +32,7 @@ void UART0_IRQHandler(void){
 		i = 0;
 	}
 	if (msg == 'a')
+		rtc_set_alarm(4294967295);
 		stopTheAlarm();
 }
 

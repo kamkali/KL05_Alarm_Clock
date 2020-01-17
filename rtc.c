@@ -36,18 +36,17 @@ void rtc_init(void){
 	// enable LRL lock
 	RTC->LR |= RTC_LR_LRL_MASK;
 
+	RTC->IER = RTC_IER_TAIE_MASK;
+
 	// enable counter
 	RTC->SR |= RTC_SR_TCE_MASK;
-	
-	RTC->IER = RTC_IER_TAIE_MASK;
-	
+		
 	NVIC_ClearPendingIRQ(RTC_IRQn);
 	//NVIC_SetPriority(RTC_IRQn, 0);
 	NVIC_EnableIRQ(RTC_IRQn);
 }
 
 void rtc_set_alarm(uint32_t time){
-	NVIC_ClearPendingIRQ(RTC_IRQn);
 	RTC->TAR = time;
 }
 
