@@ -31,9 +31,11 @@ void UART0_IRQHandler(void){
 		j = i;
 		i = 0;
 	}
-	if (msg == 'a')
+	if (msg == 'a'){
 		rtc_set_alarm(4294967295);
+		//RTC->SR |= RTC_SR_TAF_MASK;
 		stopTheAlarm();
+	}
 }
 
 
@@ -97,14 +99,7 @@ int main(void){
 				rtc_set_alarm(alarm_epoch);
 				uart_sendStr("Alarm has been set!");
 			}
-		
-			
 		}
-		
-		if (fullMsg[0] == 'a'){
-			stopTheAlarm();
-		}
-		
 		/*
 		else if (msg != ' '){
 			for (int k = 0; k < j; k++){

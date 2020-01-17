@@ -4,7 +4,6 @@
 ".\objects\uart.o"
 ".\objects\buzzer.o"
 ".\objects\extra.o"
-".\objects\pit.o"
 ".\objects\alarm.o"
 ".\objects\rtc.o"
 ".\objects\datetime.o"

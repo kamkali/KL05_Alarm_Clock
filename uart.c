@@ -26,7 +26,7 @@ void uart_init(){
 		//UART0->C2 |= UART0_C2_TIE_MASK; //DODANE DODATKOWO
     UART0->C2 |= (UART0_C2_TE_MASK | UART0_C2_RE_MASK);        //Wlacz nadajnik i o dbiornik
     NVIC_EnableIRQ(UART0_IRQn);
-		NVIC_SetPriority(UART0_IRQn, 3);
+		NVIC_SetPriority(UART0_IRQn, 0);
     NVIC_ClearPendingIRQ(UART0_IRQn);
 }
 

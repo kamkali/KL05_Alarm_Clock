@@ -2,8 +2,7 @@
 
 uint8_t ring = 1;
 
-void ringTheAlarm(void){
-	ring = 1;
+void ringTheAlarm(){
 	while(ring){
 		ledOn(RED);
 		buzzerTone(1, 100);

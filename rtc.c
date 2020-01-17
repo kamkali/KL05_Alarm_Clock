@@ -42,7 +42,7 @@ void rtc_init(void){
 	RTC->SR |= RTC_SR_TCE_MASK;
 		
 	NVIC_ClearPendingIRQ(RTC_IRQn);
-	//NVIC_SetPriority(RTC_IRQn, 0);
+	NVIC_SetPriority(RTC_IRQn, 10);
 	NVIC_EnableIRQ(RTC_IRQn);
 }
 

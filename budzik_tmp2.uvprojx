@@ -428,16 +428,6 @@
               <FilePath>.\extra.h</FilePath>
             </File>
             <File>
-              <FileName>pit.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\pit.c</FilePath>
-            </File>
-            <File>
-              <FileName>pit.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\pit.h</FilePath>
-            </File>
-            <File>
               <FileName>alarm.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\alarm.c</FilePath>
