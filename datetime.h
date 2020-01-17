@@ -14,7 +14,7 @@ typedef struct
     uint16_t year;   // 0-99 (2000-2099)
 }date_time_t;
 
-static unsigned short days[4][12] =
+static uint16_t days[4][12] =
         {
                 {   0,  31,  60,  91, 121, 152, 182, 213, 244, 274, 305, 335},
                 { 366, 397, 425, 456, 486, 517, 547, 578, 609, 639, 670, 700},
@@ -23,9 +23,9 @@ static unsigned short days[4][12] =
         };
 				
 				
-unsigned int date_time_to_epoch(date_time_t* date_time);
+uint32_t date_time_to_epoch(date_time_t* date_time);
 				
-void epoch_to_date_time(date_time_t* date_time, unsigned int epoch);
+void epoch_to_date_time(date_time_t* date_time, uint32_t epoch);
 
 uint8_t parse_str_to_date(char *str, date_time_t *date_buf);
 				

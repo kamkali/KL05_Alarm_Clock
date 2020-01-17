@@ -467,6 +467,16 @@
               <FileType>5</FileType>
               <FilePath>.\datetime.h</FilePath>
             </File>
+            <File>
+              <FileName>menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\menu.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

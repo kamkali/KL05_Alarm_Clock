@@ -1,19 +1,19 @@
 #include "datetime.h"
 #include "uart.h"
 
-unsigned int date_time_to_epoch(date_time_t* date_time)
+uint32_t date_time_to_epoch(date_time_t* date_time)
 {
-    unsigned int second = date_time->second;  // 0-59
-    unsigned int minute = date_time->minute;  // 0-59
-    unsigned int hour   = date_time->hour;    // 0-23
-    unsigned int day    = date_time->day-1;   // 0-30
-    unsigned int month  = date_time->month-1; // 0-11
-    unsigned int year   = date_time->year;    // 0-99
+    uint32_t second = date_time->second;  // 0-59
+    uint32_t minute = date_time->minute;  // 0-59
+    uint32_t hour   = date_time->hour;    // 0-23
+    uint32_t day    = date_time->day-1;   // 0-30
+    uint32_t month  = date_time->month-1; // 0-11
+    uint32_t year   = date_time->year;    // 0-99
     return (((year/4*(365*4+1)+days[year%4][month]+day)*24+hour)*60+minute)*60+second;
 }
 
 
-void epoch_to_date_time(date_time_t* date_time, unsigned int epoch)
+void epoch_to_date_time(date_time_t* date_time, uint32_t epoch)
 {
 	date_time->second = epoch%60;
 	epoch /= 60;
@@ -22,16 +22,16 @@ void epoch_to_date_time(date_time_t* date_time, unsigned int epoch)
 	date_time->hour   = epoch%24;
 	epoch /= 24;
 
-    unsigned int years = epoch/(365*4+1)*4; epoch %= 365*4+1;
+    uint32_t years = epoch/(365*4+1)*4; epoch %= 365*4+1;
 
-    unsigned int year;
+    uint32_t year;
     for (year=3; year>0; year--)
     {
         if (epoch >= days[year][0])
             break;
     }
 
-    unsigned int month;
+    uint32_t month;
     for (month=11; month>0; month--)
     {
         if (epoch >= days[year][month])
@@ -43,6 +43,12 @@ void epoch_to_date_time(date_time_t* date_time, unsigned int epoch)
     date_time->day   = epoch-days[year][month]+1;
 }
 
+
+/**
+ * C version 0.4 char* style "itoa":
+ * Written by Lukás Chmela
+ * Released under GPLv3.
+ */
 static char* itoa(int value, char* result, int base) {
     // check that the base if valid
     if (base < 2 || base > 36) { *result = '\0'; return result; }
@@ -67,17 +73,18 @@ static char* itoa(int value, char* result, int base) {
     return result;
 }
 
+
 void date_time_uart_send_str(date_time_t* date_time) {
 	char buffer[255];
 
 	uart_sendStr("Current date: ");
-	itoa(date_time->year, buffer, 10);
+	itoa(date_time->day, buffer, 10);
 	uart_sendStr(buffer);
 	uart_sendCh('/');
 	itoa(date_time->month, buffer, 10);
 	uart_sendStr(buffer);
 	uart_sendCh('/');
-	itoa(date_time->day, buffer, 10);
+	itoa(date_time->year, buffer, 10);
 	uart_sendStr(buffer);
 	uart_sendCh(' ');
 	itoa(date_time->hour, buffer, 10);
@@ -90,6 +97,7 @@ void date_time_uart_send_str(date_time_t* date_time) {
 	uart_sendStr(buffer);
 	uart_sendCh('\r');
 }
+
 
 static uint8_t find_number(uint8_t ch){
     switch (ch)
@@ -109,6 +117,7 @@ static uint8_t find_number(uint8_t ch){
             return 101;
     }
 }
+
 
 uint8_t parse_str_to_date(char *str, date_time_t * date_buf){
     //parses str "<day>/<month>/<year(last 2 dec)>:<hour>/<min>/<sec> to date_time_t struct
