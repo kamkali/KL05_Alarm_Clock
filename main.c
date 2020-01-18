@@ -9,6 +9,10 @@
 #include "menu.h"
 
 #define BUFFER_SIZE  255
+#define SNOOZE_LENGTH	15		// drzemka 15 s
+#define SNOOZE_REPEATS 3
+#define CLEAR_ALARM_FLAG 4294967295
+
 
 
 char msg = ' ';
@@ -16,6 +20,7 @@ char fullMsg[BUFFER_SIZE];
 uint8_t full_msg_flag = 0;
 uint16_t i = 0;
 uint16_t j = 0;
+uint16_t drzemka_counter = 0;
 
 
 void UART0_IRQHandler(void){
@@ -31,17 +36,33 @@ void UART0_IRQHandler(void){
 		j = i;
 		i = 0;
 	}
-	if (msg == 'a'){
-		rtc_set_alarm(4294967295);
-		//RTC->SR |= RTC_SR_TAF_MASK;
-		stopTheAlarm();
-	}
+		if (msg == 'a'){
+			//RTC->SR |= RTC_SR_TAF_MASK;
+			rtc_set_alarm(CLEAR_ALARM_FLAG);
+			stopTheAlarm();
+		}
+		if (msg == 'd'){
+			if (drzemka_counter < SNOOZE_REPEATS){
+				date_time_t snooze_date;
+				
+				rtc_set_alarm(rtc_read() + SNOOZE_LENGTH);
+				stopTheAlarm();
+				
+				drzemka_counter++;
+				msg = 0;
+			} else{
+				uart_sendStr("NIE MA KURWA DRZEMKI WSTAWAJ MAKLER SZMATO JEBANA");
+				uart_sendStr("Press <a> to stop the alarm");
+				msg = 0;
+			}
+		}
 }
 
 
 void RTC_IRQHandler(void){
-	uart_sendStr("ALARM!!! Press <a> to stop the alarm\n\r");
+	uart_sendStr("ALARM!!! Press <a> to stop the alarm or <d> to set snooze\n\r");
 	ringTheAlarm();
+	//rtc_set_alarm(CLEAR_ALARM_FLAG);
 }
 
 
@@ -97,15 +118,7 @@ int main(void){
 				uart_sendStr("Wrong date!");
 			} else {
 				rtc_set_alarm(alarm_epoch);
-				uart_sendStr("Alarm has been set!");
 			}
 		}
-		/*
-		else if (msg != ' '){
-			for (int k = 0; k < j; k++){
-				uart_sendCh(fullMsg[k]);
-			}
-		}
-		*/
 	}
 }

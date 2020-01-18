@@ -8,3 +8,5 @@
 .\objects\rtc.o: C:\Users\kamkalis\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\rtc.o: C:\Users\kamkalis\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\system_MKL05Z4.h
 .\objects\rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\rtc.o: uart.h
+.\objects\rtc.o: datetime.h

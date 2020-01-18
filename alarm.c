@@ -3,6 +3,7 @@
 uint8_t ring = 1;
 
 void ringTheAlarm(){
+	ring = 1;
 	while(ring){
 		ledOn(RED);
 		buzzerTone(1, 100);

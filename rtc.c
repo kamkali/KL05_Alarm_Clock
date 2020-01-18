@@ -1,5 +1,7 @@
 #include "rtc.h"
 #include "MKL05Z4.h"
+#include "uart.h"
+#include "datetime.h"
 
 void rtc_init(void){
 	// enable RTC clock
@@ -47,6 +49,12 @@ void rtc_init(void){
 }
 
 void rtc_set_alarm(uint32_t time){
+	date_time_t date;
+	uart_sendStr("Alarm has been set with time: ");
+	epoch_to_date_time(&date, time);
+	date_time_uart_send_str(&date);
+	
+	
 	RTC->TAR = time;
 }
 
