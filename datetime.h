@@ -33,4 +33,3 @@ void date_time_uart_send_str(date_time_t* date_time);
 
 
 #endif /* __DATETIME_H__*/
-				

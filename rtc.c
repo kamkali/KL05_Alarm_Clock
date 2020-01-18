@@ -3,6 +3,9 @@
 #include "uart.h"
 #include "datetime.h"
 
+#define CLEAR_ALARM_FLAG 4294967295
+
+
 void rtc_init(void){
 	// enable RTC clock
 	SIM->SCGC6 |= SIM_SCGC6_RTC_MASK;
@@ -49,11 +52,12 @@ void rtc_init(void){
 }
 
 void rtc_set_alarm(uint32_t time){
-	date_time_t date;
-	uart_sendStr("Alarm has been set with time: ");
-	epoch_to_date_time(&date, time);
-	date_time_uart_send_str(&date);
-	
+	if (time != CLEAR_ALARM_FLAG){
+		date_time_t date;
+		uart_sendStr("\r\nAlarm has been set with time: ");
+		epoch_to_date_time(&date, time);
+		date_time_uart_send_str(&date);
+	}
 	
 	RTC->TAR = time;
 }

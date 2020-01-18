@@ -3,13 +3,13 @@
 
 uint32_t date_time_to_epoch(date_time_t* date_time)
 {
-    uint32_t second = date_time->second;  // 0-59
-    uint32_t minute = date_time->minute;  // 0-59
-    uint32_t hour   = date_time->hour;    // 0-23
-    uint32_t day    = date_time->day-1;   // 0-30
-    uint32_t month  = date_time->month-1; // 0-11
-    uint32_t year   = date_time->year;    // 0-99
-    return (((year/4*(365*4+1)+days[year%4][month]+day)*24+hour)*60+minute)*60+second;
+	uint32_t second = date_time->second;  // 0-59
+	uint32_t minute = date_time->minute;  // 0-59
+	uint32_t hour   = date_time->hour;    // 0-23
+	uint32_t day    = date_time->day-1;   // 0-30
+	uint32_t month  = date_time->month-1; // 0-11
+	uint32_t year   = date_time->year;    // 0-99
+	return (((year/4*(365*4+1)+days[year%4][month]+day)*24+hour)*60+minute)*60+second;
 }
 
 
@@ -22,25 +22,25 @@ void epoch_to_date_time(date_time_t* date_time, uint32_t epoch)
 	date_time->hour   = epoch%24;
 	epoch /= 24;
 
-    uint32_t years = epoch/(365*4+1)*4; epoch %= 365*4+1;
+	uint32_t years = epoch/(365*4+1)*4; epoch %= 365*4+1;
 
-    uint32_t year;
-    for (year=3; year>0; year--)
-    {
-        if (epoch >= days[year][0])
-            break;
-    }
+	uint32_t year;
+	for (year=3; year>0; year--)
+	{
+		if (epoch >= days[year][0])
+			break;
+	}
 
-    uint32_t month;
-    for (month=11; month>0; month--)
-    {
-        if (epoch >= days[year][month])
-            break;
-    }
+	uint32_t month;
+	for (month=11; month>0; month--)
+	{
+		if (epoch >= days[year][month])
+			break;
+	}
 
-    date_time->year  = years+year;
-    date_time->month = month+1;
-    date_time->day   = epoch-days[year][month]+1;
+	date_time->year  = years+year;
+	date_time->month = month+1;
+	date_time->day   = epoch-days[year][month]+1;
 }
 
 
@@ -77,7 +77,6 @@ static char* itoa(int value, char* result, int base) {
 void date_time_uart_send_str(date_time_t* date_time) {
 	char buffer[255];
 
-	uart_sendStr("Current date: ");
 	itoa(date_time->day, buffer, 10);
 	uart_sendStr(buffer);
 	uart_sendCh('/');

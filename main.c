@@ -8,27 +8,26 @@
 #include "datetime.h"
 #include "menu.h"
 
-#define BUFFER_SIZE  255
-#define SNOOZE_LENGTH	15		// drzemka 15 s
-#define SNOOZE_REPEATS 3
-#define CLEAR_ALARM_FLAG 4294967295
+#define BUFFER_SIZE  			255
+#define SNOOZE_LENGTH			15							// drzemka 15 s
+#define SNOOZE_REPEATS 		3								// ilosc powtorzen drzemki
+#define CLEAR_ALARM_FLAG 	4294967295			// max uint32 do czyszczenia flagi
 
 
 
-char msg = ' ';
 char fullMsg[BUFFER_SIZE];
 uint8_t full_msg_flag = 0;
-uint16_t i = 0;
-uint16_t j = 0;
-uint16_t drzemka_counter = 0;
+uint8_t j = 0;
 
 
 void UART0_IRQHandler(void){
+	char msg;
+	static uint8_t drzemka_counter = 0;
+	static uint8_t i = 0;
 	full_msg_flag = 0;
 
 	NVIC_ClearPendingIRQ(UART0_IRQn);
 	msg = uart_getChar();
-	uart_sendCh(msg);
 	fullMsg[i] = msg;
 	i++;
 	if (msg == '\r'){
@@ -36,24 +35,23 @@ void UART0_IRQHandler(void){
 		j = i;
 		i = 0;
 	}
-		if (msg == 'a'){
-			//RTC->SR |= RTC_SR_TAF_MASK;
+		if ( msg == 'a' && (RTC->SR & RTC_SR_TAF_MASK) ){
+			uart_sendStr("Stopping alarm.\n\r");
 			rtc_set_alarm(CLEAR_ALARM_FLAG);
 			stopTheAlarm();
+			show_menu();
 		}
-		if (msg == 'd'){
-			if (drzemka_counter < SNOOZE_REPEATS){
-				date_time_t snooze_date;
-				
+		if ( msg == 'd' && (RTC->SR & RTC_SR_TAF_MASK) ){
+			if (drzemka_counter < SNOOZE_REPEATS){				
 				rtc_set_alarm(rtc_read() + SNOOZE_LENGTH);
 				stopTheAlarm();
 				
 				drzemka_counter++;
-				msg = 0;
+				show_menu();
 			} else{
-				uart_sendStr("NIE MA KURWA DRZEMKI WSTAWAJ MAKLER SZMATO JEBANA");
+				uart_sendStr("\n\rNO MORE SNOOZE ALOWED! WAKE UP!!!");
 				uart_sendStr("Press <a> to stop the alarm");
-				msg = 0;
+				drzemka_counter = 0;
 			}
 		}
 }
@@ -62,7 +60,6 @@ void UART0_IRQHandler(void){
 void RTC_IRQHandler(void){
 	uart_sendStr("ALARM!!! Press <a> to stop the alarm or <d> to set snooze\n\r");
 	ringTheAlarm();
-	//rtc_set_alarm(CLEAR_ALARM_FLAG);
 }
 
 
@@ -86,6 +83,7 @@ int main(void){
 		uart_sendStr("Wrong format!!!\n\r");
 	
 	uart_sendStr("\n\r");
+	uart_sendStr("Current date: ");
 	date_time_uart_send_str(&date);
 	uart_sendStr("\n\r");
 	show_menu();
@@ -96,11 +94,15 @@ int main(void){
 	
 	rtc_time = rtc_read();
 	while(1){
+		
 		if (fullMsg[0] == 't'){
 			if (rtc_read() > rtc_time){
-			rtc_time = rtc_read();
-			epoch_to_date_time(&date, rtc_read());
-			date_time_uart_send_str(&date);
+				rtc_time = rtc_read();
+				epoch_to_date_time(&date, rtc_read());
+				
+				uart_sendStr("Current date: ");
+				date_time_uart_send_str(&date);
+				uart_sendStr("\n\r");				
 			}
 		}
 
@@ -110,15 +112,25 @@ int main(void){
 			while (!full_msg_flag);
 
 			if ( parse_str_to_date(fullMsg, &alarm_date) == 0 )
-				uart_sendStr("Wrong format!!!\r\n");
+				uart_sendStr("Wrong format!!!\n\r");
 			
 			alarm_epoch = date_time_to_epoch(&alarm_date);
 			
 			if (rtc_read() >= alarm_epoch){
-				uart_sendStr("Wrong date!");
+				uart_sendStr("Wrong date!\n\r");
+				
 			} else {
 				rtc_set_alarm(alarm_epoch);
 			}
+			show_menu();
+			fullMsg[0] = ' ';
+		}
+		
+		if (fullMsg[0] == 'r'){
+			uart_sendStr("Deleting alarm.\n\r");
+			show_menu();
+			rtc_set_alarm(CLEAR_ALARM_FLAG);
+			fullMsg[0] = ' ';
 		}
 	}
 }
