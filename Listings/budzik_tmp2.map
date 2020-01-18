@@ -27,9 +27,9 @@ Section Cross References
     main.o(i.main) refers to rtc.o(i.rtc_read) for rtc_read
     main.o(i.main) refers to datetime.o(i.epoch_to_date_time) for epoch_to_date_time
     main.o(i.main) refers to rtc.o(i.rtc_set_alarm) for rtc_set_alarm
-    main.o(i.main) refers to main.o(.conststring) for .conststring
     main.o(i.main) refers to main.o(.data) for full_msg_flag
     main.o(i.main) refers to main.o(.bss) for fullMsg
+    main.o(i.main) refers to main.o(.conststring) for .conststring
     leds.o(i.blinkLeds) refers to extra.o(i.delay_mc) for delay_mc
     leds.o(i.blinkLeds) refers to leds.o(.constdata) for MaskLED
     leds.o(i.initLed) refers to leds.o(.constdata) for MaskLED
@@ -355,57 +355,57 @@ Image Symbol Table
     .text                                    0x0000035c   Section        2  use_no_semi.o(.text)
     .text                                    0x0000035e   Section        0  indicate_semi.o(.text)
     i.RTC_IRQHandler                         0x00000360   Section        0  main.o(i.RTC_IRQHandler)
-    i.__ARM_common_switch8                   0x000003ac   Section        0  datetime.o(i.__ARM_common_switch8)
-    i.buzzerInit                             0x000003c8   Section        0  buzzer.o(i.buzzerInit)
+    i.__ARM_common_switch8                   0x000003b0   Section        0  datetime.o(i.__ARM_common_switch8)
+    i.buzzerTone                             0x000003cc   Section        0  buzzer.o(i.buzzerTone)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl05z4.o(.ARM.__at_0x400)
     i.SystemInit                             0x00000410   Section        0  system_mkl05z4.o(i.SystemInit)
     i.UART0_IRQHandler                       0x0000049c   Section        0  main.o(i.UART0_IRQHandler)
-    i.__NVIC_SetPriority                     0x000005cc   Section        0  uart.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x000005cd   Thumb Code   110  uart.o(i.__NVIC_SetPriority)
-    i.__NVIC_SetPriority                     0x00000644   Section        0  rtc.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00000645   Thumb Code   110  rtc.o(i.__NVIC_SetPriority)
-    i.buzzerTone                             0x000006bc   Section        0  buzzer.o(i.buzzerTone)
-    i.date_time_to_epoch                     0x000006f0   Section        0  datetime.o(i.date_time_to_epoch)
-    i.date_time_uart_send_str                0x00000740   Section        0  datetime.o(i.date_time_uart_send_str)
-    i.delay_mc                               0x000007d0   Section        0  extra.o(i.delay_mc)
-    i.epoch_to_date_time                     0x000007ec   Section        0  datetime.o(i.epoch_to_date_time)
-    i.find_number                            0x000008a4   Section        0  datetime.o(i.find_number)
-    find_number                              0x000008a5   Thumb Code    70  datetime.o(i.find_number)
-    i.initLed                                0x000008ec   Section        0  leds.o(i.initLed)
-    i.itoa                                   0x00000954   Section        0  datetime.o(i.itoa)
-    itoa                                     0x00000955   Thumb Code   114  datetime.o(i.itoa)
-    i.ledOff                                 0x000009cc   Section        0  leds.o(i.ledOff)
-    i.ledOn                                  0x000009ec   Section        0  leds.o(i.ledOn)
-    i.main                                   0x00000a18   Section        0  main.o(i.main)
-    i.parse_str_to_date                      0x00000b8c   Section        0  datetime.o(i.parse_str_to_date)
-    i.ringTheAlarm                           0x00000c7c   Section        0  alarm.o(i.ringTheAlarm)
-    i.rtc_init                               0x00000cbc   Section        0  rtc.o(i.rtc_init)
-    i.rtc_read                               0x00000d6c   Section        0  rtc.o(i.rtc_read)
-    i.rtc_set_alarm                          0x00000d78   Section        0  rtc.o(i.rtc_set_alarm)
-    i.rtc_write                              0x00000dcc   Section        0  rtc.o(i.rtc_write)
-    i.show_menu                              0x00000df4   Section        0  menu.o(i.show_menu)
-    i.stopTheAlarm                           0x00000e84   Section        0  alarm.o(i.stopTheAlarm)
-    i.uart_getChar                           0x00000e90   Section        0  uart.o(i.uart_getChar)
-    i.uart_init                              0x00000ea8   Section        0  uart.o(i.uart_init)
-    i.uart_sendCh                            0x00000f94   Section        0  uart.o(i.uart_sendCh)
-    i.uart_sendStr                           0x00000fb8   Section        0  uart.o(i.uart_sendStr)
-    .constdata                               0x00000fec   Section       12  leds.o(.constdata)
-    .conststring                             0x00000ff8   Section      225  main.o(.conststring)
-    .conststring                             0x000010dc   Section       72  datetime.o(.conststring)
-    .data                                    0x1ffffc00   Section      100  main.o(.data)
+    i.__NVIC_SetPriority                     0x000005ec   Section        0  uart.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x000005ed   Thumb Code   110  uart.o(i.__NVIC_SetPriority)
+    i.__NVIC_SetPriority                     0x00000664   Section        0  rtc.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000665   Thumb Code   110  rtc.o(i.__NVIC_SetPriority)
+    i.buzzerInit                             0x000006dc   Section        0  buzzer.o(i.buzzerInit)
+    i.date_time_to_epoch                     0x00000714   Section        0  datetime.o(i.date_time_to_epoch)
+    i.date_time_uart_send_str                0x00000764   Section        0  datetime.o(i.date_time_uart_send_str)
+    i.delay_mc                               0x000007f4   Section        0  extra.o(i.delay_mc)
+    i.epoch_to_date_time                     0x00000810   Section        0  datetime.o(i.epoch_to_date_time)
+    i.find_number                            0x000008c8   Section        0  datetime.o(i.find_number)
+    find_number                              0x000008c9   Thumb Code    70  datetime.o(i.find_number)
+    i.initLed                                0x00000910   Section        0  leds.o(i.initLed)
+    i.itoa                                   0x00000978   Section        0  datetime.o(i.itoa)
+    itoa                                     0x00000979   Thumb Code   114  datetime.o(i.itoa)
+    i.ledOff                                 0x000009f0   Section        0  leds.o(i.ledOff)
+    i.ledOn                                  0x00000a10   Section        0  leds.o(i.ledOn)
+    i.main                                   0x00000a3c   Section        0  main.o(i.main)
+    i.parse_str_to_date                      0x00000d10   Section        0  datetime.o(i.parse_str_to_date)
+    i.ringTheAlarm                           0x00000e00   Section        0  alarm.o(i.ringTheAlarm)
+    i.rtc_init                               0x00000e40   Section        0  rtc.o(i.rtc_init)
+    i.rtc_read                               0x00000ef0   Section        0  rtc.o(i.rtc_read)
+    i.rtc_set_alarm                          0x00000efc   Section        0  rtc.o(i.rtc_set_alarm)
+    i.rtc_write                              0x00000f50   Section        0  rtc.o(i.rtc_write)
+    i.show_menu                              0x00000f78   Section        0  menu.o(i.show_menu)
+    i.stopTheAlarm                           0x00001034   Section        0  alarm.o(i.stopTheAlarm)
+    i.uart_getChar                           0x00001040   Section        0  uart.o(i.uart_getChar)
+    i.uart_init                              0x00001058   Section        0  uart.o(i.uart_init)
+    i.uart_sendCh                            0x00001144   Section        0  uart.o(i.uart_sendCh)
+    i.uart_sendStr                           0x00001168   Section        0  uart.o(i.uart_sendStr)
+    .constdata                               0x0000119c   Section       12  leds.o(.constdata)
+    .conststring                             0x000011a8   Section      108  main.o(.conststring)
+    .conststring                             0x00001214   Section       72  datetime.o(.conststring)
+    .data                                    0x1ffffc00   Section      106  main.o(.data)
     days                                     0x1ffffc00   Data          96  main.o(.data)
-    drzemka_counter                          0x1ffffc62   Data           1  main.o(.data)
-    i                                        0x1ffffc63   Data           1  main.o(.data)
-    .data                                    0x1ffffc64   Section        1  alarm.o(.data)
-    .data                                    0x1ffffc66   Section       96  datetime.o(.data)
-    days                                     0x1ffffc66   Data          96  datetime.o(.data)
-    .bss                                     0x1ffffcc8   Section      255  main.o(.bss)
-    .bss                                     0x1ffffdc8   Section       96  libspace.o(.bss)
-    HEAP                                     0x1ffffe28   Section        0  startup_mkl05z4.o(HEAP)
-    STACK                                    0x1ffffe28   Section      256  startup_mkl05z4.o(STACK)
-    Heap_Mem                                 0x1ffffe28   Data           0  startup_mkl05z4.o(HEAP)
-    Stack_Mem                                0x1ffffe28   Data         256  startup_mkl05z4.o(STACK)
-    __initial_sp                             0x1fffff28   Data           0  startup_mkl05z4.o(STACK)
+    drzemka_counter                          0x1ffffc68   Data           1  main.o(.data)
+    i                                        0x1ffffc69   Data           1  main.o(.data)
+    .data                                    0x1ffffc6a   Section        1  alarm.o(.data)
+    .data                                    0x1ffffc6c   Section       96  datetime.o(.data)
+    days                                     0x1ffffc6c   Data          96  datetime.o(.data)
+    .bss                                     0x1ffffccc   Section      255  main.o(.bss)
+    .bss                                     0x1ffffdcc   Section       96  libspace.o(.bss)
+    HEAP                                     0x1ffffe30   Section        0  startup_mkl05z4.o(HEAP)
+    STACK                                    0x1ffffe30   Section      256  startup_mkl05z4.o(STACK)
+    Heap_Mem                                 0x1ffffe30   Data           0  startup_mkl05z4.o(HEAP)
+    Stack_Mem                                0x1ffffe30   Data         256  startup_mkl05z4.o(STACK)
+    __initial_sp                             0x1fffff30   Data           0  startup_mkl05z4.o(STACK)
 
     Global Symbols
 
@@ -547,40 +547,41 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x0000035d   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x0000035f   Thumb Code     0  indicate_semi.o(.text)
     RTC_IRQHandler                           0x00000361   Thumb Code    14  main.o(i.RTC_IRQHandler)
-    __ARM_common_switch8                     0x000003ad   Thumb Code    28  datetime.o(i.__ARM_common_switch8)
-    buzzerInit                               0x000003c9   Thumb Code    42  buzzer.o(i.buzzerInit)
+    __ARM_common_switch8                     0x000003b1   Thumb Code    28  datetime.o(i.__ARM_common_switch8)
+    buzzerTone                               0x000003cd   Thumb Code    46  buzzer.o(i.buzzerTone)
     SystemInit                               0x00000411   Thumb Code   116  system_mkl05z4.o(i.SystemInit)
-    UART0_IRQHandler                         0x0000049d   Thumb Code   192  main.o(i.UART0_IRQHandler)
-    buzzerTone                               0x000006bd   Thumb Code    46  buzzer.o(i.buzzerTone)
-    date_time_to_epoch                       0x000006f1   Thumb Code    72  datetime.o(i.date_time_to_epoch)
-    date_time_uart_send_str                  0x00000741   Thumb Code   142  datetime.o(i.date_time_uart_send_str)
-    delay_mc                                 0x000007d1   Thumb Code    24  extra.o(i.delay_mc)
-    epoch_to_date_time                       0x000007ed   Thumb Code   174  datetime.o(i.epoch_to_date_time)
-    initLed                                  0x000008ed   Thumb Code    86  leds.o(i.initLed)
-    ledOff                                   0x000009cd   Thumb Code    22  leds.o(i.ledOff)
-    ledOn                                    0x000009ed   Thumb Code    34  leds.o(i.ledOn)
-    main                                     0x00000a19   Thumb Code   278  main.o(i.main)
-    parse_str_to_date                        0x00000b8d   Thumb Code   240  datetime.o(i.parse_str_to_date)
-    ringTheAlarm                             0x00000c7d   Thumb Code    58  alarm.o(i.ringTheAlarm)
-    rtc_init                                 0x00000cbd   Thumb Code   156  rtc.o(i.rtc_init)
-    rtc_read                                 0x00000d6d   Thumb Code     6  rtc.o(i.rtc_read)
-    rtc_set_alarm                            0x00000d79   Thumb Code    44  rtc.o(i.rtc_set_alarm)
-    rtc_write                                0x00000dcd   Thumb Code    34  rtc.o(i.rtc_write)
-    show_menu                                0x00000df5   Thumb Code    22  menu.o(i.show_menu)
-    stopTheAlarm                             0x00000e85   Thumb Code     8  alarm.o(i.stopTheAlarm)
-    uart_getChar                             0x00000e91   Thumb Code    20  uart.o(i.uart_getChar)
-    uart_init                                0x00000ea9   Thumb Code   212  uart.o(i.uart_init)
-    uart_sendCh                              0x00000f95   Thumb Code    32  uart.o(i.uart_sendCh)
-    uart_sendStr                             0x00000fb9   Thumb Code    48  uart.o(i.uart_sendStr)
-    MaskLED                                  0x00000fec   Data          12  leds.o(.constdata)
-    Region$$Table$$Base                      0x00001124   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001144   Number         0  anon$$obj.o(Region$$Table)
+    UART0_IRQHandler                         0x0000049d   Thumb Code   214  main.o(i.UART0_IRQHandler)
+    buzzerInit                               0x000006dd   Thumb Code    42  buzzer.o(i.buzzerInit)
+    date_time_to_epoch                       0x00000715   Thumb Code    72  datetime.o(i.date_time_to_epoch)
+    date_time_uart_send_str                  0x00000765   Thumb Code   142  datetime.o(i.date_time_uart_send_str)
+    delay_mc                                 0x000007f5   Thumb Code    24  extra.o(i.delay_mc)
+    epoch_to_date_time                       0x00000811   Thumb Code   174  datetime.o(i.epoch_to_date_time)
+    initLed                                  0x00000911   Thumb Code    86  leds.o(i.initLed)
+    ledOff                                   0x000009f1   Thumb Code    22  leds.o(i.ledOff)
+    ledOn                                    0x00000a11   Thumb Code    34  leds.o(i.ledOn)
+    main                                     0x00000a3d   Thumb Code   418  main.o(i.main)
+    parse_str_to_date                        0x00000d11   Thumb Code   240  datetime.o(i.parse_str_to_date)
+    ringTheAlarm                             0x00000e01   Thumb Code    58  alarm.o(i.ringTheAlarm)
+    rtc_init                                 0x00000e41   Thumb Code   156  rtc.o(i.rtc_init)
+    rtc_read                                 0x00000ef1   Thumb Code     6  rtc.o(i.rtc_read)
+    rtc_set_alarm                            0x00000efd   Thumb Code    44  rtc.o(i.rtc_set_alarm)
+    rtc_write                                0x00000f51   Thumb Code    34  rtc.o(i.rtc_write)
+    show_menu                                0x00000f79   Thumb Code    34  menu.o(i.show_menu)
+    stopTheAlarm                             0x00001035   Thumb Code     8  alarm.o(i.stopTheAlarm)
+    uart_getChar                             0x00001041   Thumb Code    20  uart.o(i.uart_getChar)
+    uart_init                                0x00001059   Thumb Code   212  uart.o(i.uart_init)
+    uart_sendCh                              0x00001145   Thumb Code    32  uart.o(i.uart_sendCh)
+    uart_sendStr                             0x00001169   Thumb Code    48  uart.o(i.uart_sendStr)
+    MaskLED                                  0x0000119c   Data          12  leds.o(.constdata)
+    Region$$Table$$Base                      0x0000125c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000127c   Number         0  anon$$obj.o(Region$$Table)
     full_msg_flag                            0x1ffffc60   Data           1  main.o(.data)
     j                                        0x1ffffc61   Data           1  main.o(.data)
-    ring                                     0x1ffffc64   Data           1  alarm.o(.data)
-    fullMsg                                  0x1ffffcc8   Data         255  main.o(.bss)
-    __libspace_start                         0x1ffffdc8   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x1ffffe28   Data           0  libspace.o(.bss)
+    alarm_time                               0x1ffffc64   Data           4  main.o(.data)
+    ring                                     0x1ffffc6a   Data           1  alarm.o(.data)
+    fullMsg                                  0x1ffffccc   Data         255  main.o(.bss)
+    __libspace_start                         0x1ffffdcc   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x1ffffe2c   Data           0  libspace.o(.bss)
 
 
 
@@ -590,9 +591,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000165
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x0000120c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001348, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001144, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x0000127c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -655,65 +656,65 @@ Memory Map of the image
     0x0000035c   0x0000035c   0x00000002   Code   RO          550    .text               c_p.l(use_no_semi.o)
     0x0000035e   0x0000035e   0x00000000   Code   RO          552    .text               c_p.l(indicate_semi.o)
     0x0000035e   0x0000035e   0x00000002   PAD
-    0x00000360   0x00000360   0x0000004c   Code   RO            3    i.RTC_IRQHandler    main.o
-    0x000003ac   0x000003ac   0x0000001c   Code   RO          354    i.__ARM_common_switch8  datetime.o
-    0x000003c8   0x000003c8   0x00000038   Code   RO          188    i.buzzerInit        buzzer.o
+    0x00000360   0x00000360   0x00000050   Code   RO            3    i.RTC_IRQHandler    main.o
+    0x000003b0   0x000003b0   0x0000001c   Code   RO          354    i.__ARM_common_switch8  datetime.o
+    0x000003cc   0x000003cc   0x00000034   Code   RO          189    i.buzzerTone        buzzer.o
     0x00000400   0x00000400   0x00000010   Code   RO          382    .ARM.__at_0x400     startup_mkl05z4.o
     0x00000410   0x00000410   0x0000008c   Code   RO          392    i.SystemInit        system_mkl05z4.o
-    0x0000049c   0x0000049c   0x00000130   Code   RO            4    i.UART0_IRQHandler  main.o
-    0x000005cc   0x000005cc   0x00000078   Code   RO          142    i.__NVIC_SetPriority  uart.o
-    0x00000644   0x00000644   0x00000078   Code   RO          263    i.__NVIC_SetPriority  rtc.o
-    0x000006bc   0x000006bc   0x00000034   Code   RO          189    i.buzzerTone        buzzer.o
-    0x000006f0   0x000006f0   0x00000050   Code   RO          308    i.date_time_to_epoch  datetime.o
-    0x00000740   0x00000740   0x0000008e   Code   RO          309    i.date_time_uart_send_str  datetime.o
-    0x000007ce   0x000007ce   0x00000002   PAD
-    0x000007d0   0x000007d0   0x0000001c   Code   RO          214    i.delay_mc          extra.o
-    0x000007ec   0x000007ec   0x000000b8   Code   RO          310    i.epoch_to_date_time  datetime.o
-    0x000008a4   0x000008a4   0x00000046   Code   RO          311    i.find_number       datetime.o
-    0x000008ea   0x000008ea   0x00000002   PAD
-    0x000008ec   0x000008ec   0x00000068   Code   RO           93    i.initLed           leds.o
-    0x00000954   0x00000954   0x00000078   Code   RO          312    i.itoa              datetime.o
-    0x000009cc   0x000009cc   0x00000020   Code   RO           95    i.ledOff            leds.o
-    0x000009ec   0x000009ec   0x0000002c   Code   RO           96    i.ledOn             leds.o
-    0x00000a18   0x00000a18   0x00000174   Code   RO            5    i.main              main.o
-    0x00000b8c   0x00000b8c   0x000000f0   Code   RO          313    i.parse_str_to_date  datetime.o
-    0x00000c7c   0x00000c7c   0x00000040   Code   RO          234    i.ringTheAlarm      alarm.o
-    0x00000cbc   0x00000cbc   0x000000b0   Code   RO          264    i.rtc_init          rtc.o
-    0x00000d6c   0x00000d6c   0x0000000c   Code   RO          265    i.rtc_read          rtc.o
-    0x00000d78   0x00000d78   0x00000054   Code   RO          266    i.rtc_set_alarm     rtc.o
-    0x00000dcc   0x00000dcc   0x00000028   Code   RO          267    i.rtc_write         rtc.o
-    0x00000df4   0x00000df4   0x00000090   Code   RO          361    i.show_menu         menu.o
-    0x00000e84   0x00000e84   0x0000000c   Code   RO          235    i.stopTheAlarm      alarm.o
-    0x00000e90   0x00000e90   0x00000018   Code   RO          143    i.uart_getChar      uart.o
-    0x00000ea8   0x00000ea8   0x000000ec   Code   RO          144    i.uart_init         uart.o
-    0x00000f94   0x00000f94   0x00000024   Code   RO          145    i.uart_sendCh       uart.o
-    0x00000fb8   0x00000fb8   0x00000034   Code   RO          146    i.uart_sendStr      uart.o
-    0x00000fec   0x00000fec   0x0000000c   Data   RO           97    .constdata          leds.o
-    0x00000ff8   0x00000ff8   0x000000e1   Data   RO            7    .conststring        main.o
-    0x000010d9   0x000010d9   0x00000003   PAD
-    0x000010dc   0x000010dc   0x00000048   Data   RO          314    .conststring        datetime.o
-    0x00001124   0x00001124   0x00000020   Data   RO          602    Region$$Table       anon$$obj.o
+    0x0000049c   0x0000049c   0x00000150   Code   RO            4    i.UART0_IRQHandler  main.o
+    0x000005ec   0x000005ec   0x00000078   Code   RO          142    i.__NVIC_SetPriority  uart.o
+    0x00000664   0x00000664   0x00000078   Code   RO          263    i.__NVIC_SetPriority  rtc.o
+    0x000006dc   0x000006dc   0x00000038   Code   RO          188    i.buzzerInit        buzzer.o
+    0x00000714   0x00000714   0x00000050   Code   RO          308    i.date_time_to_epoch  datetime.o
+    0x00000764   0x00000764   0x0000008e   Code   RO          309    i.date_time_uart_send_str  datetime.o
+    0x000007f2   0x000007f2   0x00000002   PAD
+    0x000007f4   0x000007f4   0x0000001c   Code   RO          214    i.delay_mc          extra.o
+    0x00000810   0x00000810   0x000000b8   Code   RO          310    i.epoch_to_date_time  datetime.o
+    0x000008c8   0x000008c8   0x00000046   Code   RO          311    i.find_number       datetime.o
+    0x0000090e   0x0000090e   0x00000002   PAD
+    0x00000910   0x00000910   0x00000068   Code   RO           93    i.initLed           leds.o
+    0x00000978   0x00000978   0x00000078   Code   RO          312    i.itoa              datetime.o
+    0x000009f0   0x000009f0   0x00000020   Code   RO           95    i.ledOff            leds.o
+    0x00000a10   0x00000a10   0x0000002c   Code   RO           96    i.ledOn             leds.o
+    0x00000a3c   0x00000a3c   0x000002d4   Code   RO            5    i.main              main.o
+    0x00000d10   0x00000d10   0x000000f0   Code   RO          313    i.parse_str_to_date  datetime.o
+    0x00000e00   0x00000e00   0x00000040   Code   RO          234    i.ringTheAlarm      alarm.o
+    0x00000e40   0x00000e40   0x000000b0   Code   RO          264    i.rtc_init          rtc.o
+    0x00000ef0   0x00000ef0   0x0000000c   Code   RO          265    i.rtc_read          rtc.o
+    0x00000efc   0x00000efc   0x00000054   Code   RO          266    i.rtc_set_alarm     rtc.o
+    0x00000f50   0x00000f50   0x00000028   Code   RO          267    i.rtc_write         rtc.o
+    0x00000f78   0x00000f78   0x000000bc   Code   RO          361    i.show_menu         menu.o
+    0x00001034   0x00001034   0x0000000c   Code   RO          235    i.stopTheAlarm      alarm.o
+    0x00001040   0x00001040   0x00000018   Code   RO          143    i.uart_getChar      uart.o
+    0x00001058   0x00001058   0x000000ec   Code   RO          144    i.uart_init         uart.o
+    0x00001144   0x00001144   0x00000024   Code   RO          145    i.uart_sendCh       uart.o
+    0x00001168   0x00001168   0x00000034   Code   RO          146    i.uart_sendStr      uart.o
+    0x0000119c   0x0000119c   0x0000000c   Data   RO           97    .constdata          leds.o
+    0x000011a8   0x000011a8   0x0000006c   Data   RO            7    .conststring        main.o
+    0x00001214   0x00001214   0x00000048   Data   RO          314    .conststring        datetime.o
+    0x0000125c   0x0000125c   0x00000020   Data   RO          602    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffffc00, Load base: 0x00001144, Size: 0x000000c8, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x1ffffc00   0x00001144   0x00000064   Data   RW            8    .data               main.o
-    0x1ffffc64   0x000011a8   0x00000001   Data   RW          236    .data               alarm.o
-    0x1ffffc65   0x000011a9   0x00000001   PAD
-    0x1ffffc66   0x000011aa   0x00000060   Data   RW          315    .data               datetime.o
-
-
-    Execution Region ER_ZI (Exec base: 0x1ffffcc8, Load base: 0x0000120c, Size: 0x00000260, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffffc00, Load base: 0x0000127c, Size: 0x000000cc, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffffcc8        -       0x000000ff   Zero   RW            6    .bss                main.o
-    0x1ffffdc7   0x0000120c   0x00000001   PAD
-    0x1ffffdc8        -       0x00000060   Zero   RW          475    .bss                c_p.l(libspace.o)
-    0x1ffffe28        -       0x00000000   Zero   RW          380    HEAP                startup_mkl05z4.o
-    0x1ffffe28        -       0x00000100   Zero   RW          379    STACK               startup_mkl05z4.o
+    0x1ffffc00   0x0000127c   0x0000006a   Data   RW            8    .data               main.o
+    0x1ffffc6a   0x000012e6   0x00000001   Data   RW          236    .data               alarm.o
+    0x1ffffc6b   0x000012e7   0x00000001   PAD
+    0x1ffffc6c   0x000012e8   0x00000060   Data   RW          315    .data               datetime.o
+
+
+    Execution Region ER_ZI (Exec base: 0x1ffffccc, Load base: 0x00001348, Size: 0x00000264, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1ffffccc        -       0x000000ff   Zero   RW            6    .bss                main.o
+    0x1ffffdcb   0x00001348   0x00000001   PAD
+    0x1ffffdcc        -       0x00000060   Zero   RW          475    .bss                c_p.l(libspace.o)
+    0x1ffffe2c   0x00001348   0x00000004   PAD
+    0x1ffffe30        -       0x00000000   Zero   RW          380    HEAP                startup_mkl05z4.o
+    0x1ffffe30        -       0x00000100   Zero   RW          379    STACK               startup_mkl05z4.o
 
 
 ==============================================================================
@@ -728,17 +729,17 @@ Image component sizes
        864         36         72         96          0       5116   datetime.o
         28          4          0          0          0        475   extra.o
        180         38         12          0          0       1985   leds.o
-       752        268        225        100        255      91541   main.o
-       144        122          0          0          0        412   menu.o
+      1140        494        108        106        255      91708   main.o
+       188        154          0          0          0        484   menu.o
        432         82          0          0          0       2570   rtc.o
         68         38        192          0        256        900   startup_mkl05z4.o
        140         24          0          0          0        509   system_mkl05z4.o
        468         46          0          0          0      10576   uart.o
 
     ----------------------------------------------------------------------
-      3264        688        536        200        512     116143   Object Totals
+      3696        946        416        204        512     116382   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         4          0          3          3          1          0   (incl. Padding)
+         4          0          0          1          1          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -767,8 +768,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       620         16          0          0         96        640   Library Totals
-         8          0          0          0          0          0   (incl. Padding)
+       620         16          0          0        100        640   Library Totals
+         8          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -777,7 +778,7 @@ Image component sizes
        612         16          0          0         96        640   c_p.l
 
     ----------------------------------------------------------------------
-       620         16          0          0         96        640   Library Totals
+       620         16          0          0        100        640   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -786,15 +787,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3884        704        536        200        608     115451   Grand Totals
-      3884        704        536        200        608     115451   ELF Image Totals
-      3884        704        536        200          0          0   ROM Totals
+      4316        962        416        204        612     115690   Grand Totals
+      4316        962        416        204        612     115690   ELF Image Totals
+      4316        962        416        204          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4420 (   4.32kB)
-    Total RW  Size (RW Data + ZI Data)               808 (   0.79kB)
-    Total ROM Size (Code + RO Data + RW Data)       4620 (   4.51kB)
+    Total RO  Size (Code + RO Data)                 4732 (   4.62kB)
+    Total RW  Size (RW Data + ZI Data)               816 (   0.80kB)
+    Total ROM Size (Code + RO Data + RW Data)       4936 (   4.82kB)
 
 ==============================================================================
 
