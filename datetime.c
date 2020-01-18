@@ -1,6 +1,7 @@
 #include "datetime.h"
 #include "uart.h"
 
+
 uint32_t date_time_to_epoch(date_time_t* date_time)
 {
 	uint32_t second = date_time->second;  // 0-59

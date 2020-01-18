@@ -11,9 +11,10 @@ typedef struct
     uint16_t hour;   // 0-23
     uint16_t day;    // 1-31
     uint16_t month;  // 1-12
-    uint16_t year;   // 0-99 (2000-2099)
+    uint16_t year;   // 0-99
 }date_time_t;
 
+// LUT for year days
 static uint16_t days[4][12] =
         {
                 {   0,  31,  60,  91, 121, 152, 182, 213, 244, 274, 305, 335},

@@ -10,5 +10,4 @@ void show_menu(uint32_t is_alarm_set){
 		uart_sendStr("Press <c> to check alarm date\r\n");
 		uart_sendStr("Press <r> to delete existing alarm\r\n");
 	}
-	
 }

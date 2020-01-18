@@ -23,7 +23,6 @@ void uart_init(){
     UART0->C5 |= UART0_C5_BOTHEDGE_MASK;
 	
     UART0->C2 |= UART0_C2_RIE_MASK;
-		//UART0->C2 |= UART0_C2_TIE_MASK; //DODANE DODATKOWO
     UART0->C2 |= (UART0_C2_TE_MASK | UART0_C2_RE_MASK);        //Wlacz nadajnik i o dbiornik
     NVIC_EnableIRQ(UART0_IRQn);
 		NVIC_SetPriority(UART0_IRQn, 0);

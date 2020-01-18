@@ -21,5 +21,4 @@ void buzzerTone(uint8_t count, uint32_t length){
 		PTB->PCOR = BIT_SHIFT(BUZZER_PIN);
 		delay_mc(length);
 	}
-	
 }
