@@ -3,7 +3,9 @@ This is a final academic project for the *Microprocessor Programming Techniques*
 ## Schematic
 
 An external buzzer connected through the resistor is used. The buzzer is connected to pin 6 (GND) and Port B 13 as a GPIO output to turn it on. A simple schematic is provided below.
-![schematic](Simple_schematic.png)
+
+<img src="Simple_schematic.png" width="700" height="500" />
+
 
 ### Prerequisites
 ```
